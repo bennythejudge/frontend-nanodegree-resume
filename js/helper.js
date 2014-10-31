@@ -22,51 +22,46 @@ var HTMLheaderRole = "<span id=\"role\">%data%</span><hr/>";
 // modified to change the styling of the header using dt/dd
 var HTMLmobile = "<dt>mobile</dt><dd>%data%</dd>";
 var HTMLemail = "<dt>email</dt><dd>%data%</dd>";
-// var HTMLtwitter = "<dt>twitter</dt><dd>%data%</dd>";
 var HTMLgithub = "<dt>github</dt><dd>%data%</dd>";
-// var HTMLblog = "<dt>blog</dt><dd>%data%</dd>";
+var HTMLlinkedin = "<dt>linkedin</dt><dd>%data%</dd>";
 var HTMLlocation = "<dt>location</dt><dd>%data%</dd>";
-
 var HTMLbioPic = "<img src='%data%' class='biopic'>";
 var HTMLWelcomeMsg = "<span class='welcome-message'>%data%</span>";
-
-var HTMLskillsStart = "<dt>Skills at a Glance:</dt><dd id='skills'></dd>";
+var HTMLskillsStart = "<dt>skills at a glance:</dt><dd id='skills'></dd>";
 var HTMLskills = "<span class=\"skill\">%data%</span>";
-//var HTMLskillsClose = "</ul>";
 
-
+// work
 var HTMLworkStart = "<div class='work-entry'></div>";
-// var HTMLworkEmployer = "<a href='#'>%data%";
 var HTMLworkEmployer = "<p id=\"employer\">%data%</p>";
 var HTMLworkTitle = "<p id=\"title\">%data%</p>";
-// var HTMLworkDates = "<div class='date-text'>%data%</div>";
 var HTMLworkDates = "<p id=\"work-dates\">%data%</p>";
 var HTMLworkLocation = "<div class='location-text'>%data%</div>";
 var HTMLworkDescription = "<p>%data%</p>";
 
+// project
 var HTMLprojectStart = "<div class='project-entry'></div>";
 var HTMLprojectTitle = "<a href='#'>%data%</a>";
 var HTMLprojectDates = "<div class='date-text'>%data%</div>";
 var HTMLprojectDescription = "<p><br>%data%</p>";
 var HTMLprojectImage = "<img src='%data%'>";
 
+// education
 var HTMLschoolStart = "<div class='education-entry'></div>";
-// var HTMLschoolName = "<a href='%link%'>%data%</a>";
 var HTMLschoolName = "<br/><p>%data%<p>";
 var HTMLschoolDegree = "<p>%data%</p>";
 var HTMLschoolDates = "<div class='date-text'><p>%data%</p></div>";
 var HTMLschoolLocation = "<div class='location-text'><p>%data%</p></div>";
 var HTMLschoolMajor = "<em>Major: %data%</em>"
 
+// online courses
 var HTMLonlineClasses = "<h3>Online Classes</h3>";
 var HTMLonlineTitle = "<br/><p><em>%data%</em></p>";
 var HTMLonlineSchool = "<p>%data%</p>";
 var HTMLonlineDates = "<p>%data%</p>";
 var HTMLonlineURL = "<br><a href='#'>%data%</a>";
 
-var internationalizeButton = "<button>Internationalize</button>";
+// the map
 var googleMap = "<div id='map'></div>";
-
 
 /*
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
@@ -77,8 +72,6 @@ $(document).ready(function() {
     $('#name').html(iName);  
   });
 })
-
-
 
 /*
 The next few lines about clicks are for the Collecting Click Locations quiz in Lesson 2.
@@ -99,8 +92,6 @@ $(document).click(function(loc) {
   // your code goes here!
 });
 
-
-
 /*
 This is the fun part. Here's where we generate the custom Google Map for the website.
 See the documentation below for more details.
@@ -112,9 +103,7 @@ var map;    // declares a global map variable
 Start here! initializeMap() is called when page is loaded.
 */
 function initializeMap() {
-
   var locations;        
-
   var mapOptions = {
     disableDefaultUI: true,
     zoomControl: false,
@@ -131,7 +120,7 @@ function initializeMap() {
   written for bio, education, and work.
   */
   function locationFinder() {
-    console.log("inside locationFinder");
+    //console.log("inside locationFinder");
     // initializes an empty array
     var locations = [];
     // adds the single location property from bio to the locations array
@@ -145,7 +134,7 @@ function initializeMap() {
     // iterates through work locations and appends each location to
     // the locations array
     for (var job in work.jobs) {
-      console.log(work.jobs[job].location);
+      //console.log(work.jobs[job].location);
       locations.push(work.jobs[job].location);
     }
     return locations;
@@ -213,10 +202,6 @@ function initializeMap() {
   If so, it creates a new map marker for that location.
   */
   function callback(results, status) {
-    console.log("callback");
-    console.log(results);
-    console.log(status);
-    console.log("=========");
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       createMapMarker(results[0])
     } else {
@@ -229,17 +214,12 @@ function initializeMap() {
   and fires off Google place searches for each location
   */
   function pinPoster(locations) {
-    
-    console.log("inside pinPoster");
-    console.log(locations);
-
     // creates a Google place search service object. PlacesService does the work of
     // actually searching for location data.
     var service = new google.maps.places.PlacesService(map);
     
     // Iterates through the array of locations, creates a search object for each location
     for (place in locations) {
-
       // the search request object
       var request = {
         query: locations[place]
@@ -247,9 +227,6 @@ function initializeMap() {
 
       // Actually searches the Google Maps API for location data and runs the callback 
       // function with the search results after each search.
-      
-      console.log("calling service.textSearch");
-      console.log(request);
       // trying to slow down calls            
       service.textSearch(request, callback);
     }
@@ -264,7 +241,6 @@ function initializeMap() {
   // pinPoster(locations) creates pins on the map for each location in
   // the locations array
   pinPoster(locations);
-  
 };
 
 /*

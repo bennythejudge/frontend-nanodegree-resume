@@ -2,9 +2,7 @@
     padding:0;
     margin:0;
     font-family: 'Roboto', sans-serif;
-/*    font-family: 'Indie Flower', cursive;*/
-/*    font-family: 'Short Stack', cursive;;*/
-}
+ }
 
 #role {
     color: white;
@@ -17,7 +15,6 @@
   padding-right: 5%;
   margin-bottom: 20px;
 }
-
 
 h1 {
   font-size: 40px;
@@ -70,8 +67,6 @@ h2, h3, h4, h5 {
   font-size: 14px;
   color: #999999;
   line-height: 16px;
-  /* float: right; */
-
 }
 
 p {
@@ -98,10 +93,10 @@ a {
   line-height: 28px;
 }
 
-#skills {
+/*#skills {
   display: none;
 }
-
+*/
 .orange {
   background-color: #131A2D;
 }
@@ -125,12 +120,8 @@ a {
   background-color: #4A4A4A;
 }
 
-/* TODO: Replace with image later */
 #header {
-/*  background-color: #484848;*/
   background-color: #131A2D;
-/*  padding: 10px;*/
-  
 }
 
 .flex-box {
@@ -150,11 +141,11 @@ ul {
   list-style-type: none;
 }
 
-
 .biopic {
   float: left;
   padding: 25px 20px 10px 10px;
   width: 200px;
+  height: 250px;
   display: none;
 }
 
@@ -198,8 +189,12 @@ img {
   .biopic {
     width: 150px;
   }
-  .welcome-message {
-    display: none;
+}
+
+@media only screen and (min-width: 750px) {
+  #skills,
+  .biopic {
+    display: block;
   }
 }
 
@@ -215,19 +210,6 @@ img {
   width: 100%;
   padding-bottom: 5%;
 }
-
-@media only screen and (min-width: 750px) {
-  #skills,
-  .biopic {
-    display: block;
-  }
-}
-
-/*
-.collapsed-text {
-  display: block;
-}
-*/
 
 #topContacts {
   padding: 10px;

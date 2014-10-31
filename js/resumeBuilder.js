@@ -1,10 +1,9 @@
-// this is the resumeBuilder.js
-// these are JSONs objects  
-// instead of defining statically the content in local JSONs, 
-// i will try to fetch them from a shared datastorage - for example 
-// google docs
-// --------------------------------------------------------------------
-
+/*
+ resumeBuilder.js
+ contains the JSON with the data to publish
+ and the display methods
+by Benedetto Lo Giudice
+*/
 
 var work = {
   "jobs":  [
@@ -75,7 +74,7 @@ work.display = function () {
 /*
 bio contains a name, role, welcomeMessage, contacts object and skills array. The contacts object should contain (but doesn't have to) a mobile number, email address, github username, twitter handle and location.
 */
-
+/* I have added a github link */
 var bio = {
     "name": "Benedetto Lo Giudice",
     "role": "Front-End Developer Apprentice",
@@ -86,7 +85,8 @@ var bio = {
         "githublink": "https://github.com/bennythejudge",
         "github": "bennythejudge",
         "twitter": "@twitter",
-        "location" : "London, UK, Europe"
+        "location" : "London, UK, Europe",
+        "linkedin": "https://www.linkedin.com/in/benedettologiudice"
     },
     "skills": [ "Solaris", "Linux", "Perl", "Python"],
     "bioPic": "images/myphoto01.jpg"
@@ -95,61 +95,34 @@ var bio = {
 bio.display = function () {
   var formattedName = HTMLheaderName.replace("%data%",bio.name);
   var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
-  var f_welcome_msg = HTMLWelcomeMsg.replace("%data%",bio.welcomeMessage)
-  //
   var f_mobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
   var f_photo = HTMLbioPic.replace("%data%",bio.bioPic)
-
-  // var twitter = HTMLtwitter.replace("%data%","twitter");
-  //twitter = twitter.replace("%data%",bio.contacts.twitter);
-  // var github = HTMLgithub.replace("%data%",bio.contacts.github);
   var github = HTMLgithub.replace("%data%","<a class=\"contacts-link\" href=\""+bio.contacts.githublink+"\" target=\"_blank\">"+bio.contacts.github+"</a>");
-  // var github = HTMLgithub.replace("%data%",bio.contacts.github);
-  // var github = HTMLgithub.replace("%data%","github");
-  // var f_email = HTMLemail.replace("%data%", bio.contacts.email);
   var f_email = HTMLemail.replace("%data%","<a class=\"contacts-link\" href=\"mailto:"+bio.contacts.email+"\">"+bio.contacts.email+"</a>");
   var f_location = HTMLlocation.replace("%data%",bio.contacts.location);
-
-  // console.log(f_photo);
-  // console.log(twitter);
-  // console.log(github);
-  // console.log(bio.skills.length);
+  var f_linkedin = HTMLlinkedin.replace("%data%","<a class=\"contacts-link\" href=\""+bio.contacts.linkedin+"\" target=\"_blank\">"+bio.contacts.linkedin+"</a>");
 
   // Display stuff please
   $("#header").append(formattedName);
   $("#header").append(formattedRole);
-  //$("h1").append(internationalizeButton);
   // contacts
   $("#header").append(f_photo);
   HTMLContacts = '<dl id="topContacts"></dl>';
   $("#header").append(HTMLContacts);
-  $("#topContacts").append(github);
   $("#topContacts").append(f_location);
+  $("#topContacts").append(github);
+  $("#topContacts").append(f_linkedin);
   $("#topContacts").append(f_email);
-  //
+
   // $("#header").append(f_welcome_msg);
   // skills
   if ( bio.skills.length > 0 ) {
-
     $("#topContacts").append(HTMLskillsStart);
-    //console.log(bio.skills[0])
     for (s in bio.skills) {
       var formattedSkill = HTMLskills.replace("%data%",bio.skills[s]);
       $("#skills").append(formattedSkill);
     }
-     // $("#header").append(HTMLskillsStart);
-     // var formattedSkill = HTMLskills.replace("%data%",bio.skills[0]);
-     // $("#skills").append(formattedSkill);
-     // var formattedSkill = HTMLskills.replace("%data%",bio.skills[1]);
-     // $("#skills").append(formattedSkill);
-     // var formattedSkill = HTMLskills.replace("%data%",bio.skills[2]);
-     // $("#skills").append(formattedSkill);
-     // var formattedSkill = HTMLskills.replace("%data%",bio.skills[3]);
-     // $("#skills").append(formattedSkill);
-     // var formattedSkill = HTMLskills.replace("%data%",bio.skills[4]);
-     // $("#skills").append(formattedSkill);
   }
-
 }
 
 /*
@@ -239,7 +212,7 @@ education.display = function () {
       // console.log(education.schools[e].name);
       var a=HTMLschoolName.replace("%data%",education.schools[e].name);
       // a=a.replace("%link%",education.schools[e].url);
-      console.log(a);
+      //console.log(a);
       $(".education-entry:last").append(HTMLschoolDates.replace("%data%",education.schools[e].dates));
       $(".education-entry:last").append(a);
       $(".education-entry:last").append(HTMLschoolLocation.replace("%data%",education.schools[e].location));
@@ -287,11 +260,8 @@ var projects = {
 // create a function as part of the projects objects
 // encapsulation
 projects.display = function () {
-  //console.log(projects);
   $("#projects").append("<div id=\"projects-foldable-content\"></div>");
   for (p in projects.projects) {
-    //console.log(projects.projects[p].title);
-    //console.log(projects.projects[p].dates);
     $("#projects-foldable-content").append(HTMLprojectStart);
     $(".project-entry:last").append(HTMLprojectTitle.replace("%data%",projects.projects[p].title));
     $(".project-entry:last").append(HTMLprojectDates.replace("%data%",projects.projects[p].dates));
@@ -300,7 +270,6 @@ projects.display = function () {
       $(".project-entry:last").append(HTMLprojectImage.replace("%data%",projects.projects[p].images[0]));
     }
   }
-  
 }
 
 //////// helper functions ///////////////////////////
