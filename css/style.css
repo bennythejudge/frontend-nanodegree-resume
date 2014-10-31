@@ -98,12 +98,6 @@ a {
   line-height: 28px;
 }
 
-#skillsH3 {
-    text-align: left;
-  color: #F5AE23;
-  display: none;
-}
-
 #skills {
   display: none;
 }
@@ -159,7 +153,7 @@ ul {
 
 .biopic {
   float: left;
-  padding: 10px;
+  padding: 25px 20px 10px 10px;
   width: 200px;
   display: none;
 }
@@ -179,10 +173,6 @@ img {
   height: 12px;
   color: white;
   display: inline-block;
-}
-
-span {
-  padding: 5px;
 }
 
 #letsConnect {
@@ -227,7 +217,6 @@ span {
 }
 
 @media only screen and (min-width: 750px) {
-  #skillsH3,
   #skills,
   .biopic {
     display: block;
@@ -239,3 +228,26 @@ span {
   display: block;
 }
 */
+
+#topContacts {
+  padding: 10px;
+}
+#topContacts dt {
+  color: #f5ae23;
+  font-size: 1.2em;
+}
+#topContacts dd {
+  padding-bottom: 10px;
+}
+#topContacts dd:last-child {
+  padding-bottom: 0;
+}
+#topContacts .skill:after {
+  content: " / ";
+}
+#topContacts .skill:last-child:after {
+  content: none;
+}
+#topContacts dd, #topContacts dd a {
+  color: #fff;
+}

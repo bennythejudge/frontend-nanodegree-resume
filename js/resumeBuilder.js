@@ -78,11 +78,12 @@ bio contains a name, role, welcomeMessage, contacts object and skills array. The
 
 var bio = {
     "name": "Benedetto Lo Giudice",
-    "role": "Unix System administrator + Front-End Developer Apprentice",
+    "role": "Front-End Developer Apprentice",
     "welcomeMessage": "",
     "contacts": {
         "mobile": "+xxxxxxxx",
         "email": "benedettologiudice@gmail.com",    
+        "githublink": "https://github.com/bennythejudge",
         "github": "bennythejudge",
         "twitter": "@twitter",
         "location" : "London, UK, Europe"
@@ -102,11 +103,11 @@ bio.display = function () {
   // var twitter = HTMLtwitter.replace("%data%","twitter");
   //twitter = twitter.replace("%data%",bio.contacts.twitter);
   // var github = HTMLgithub.replace("%data%",bio.contacts.github);
-  var github = HTMLgithub.replace("%data%","<a class=\"contacts-link\" href=\"#\">"+"example"+"</a>");
+  var github = HTMLgithub.replace("%data%","<a class=\"contacts-link\" href=\""+bio.contacts.githublink+"\" target=\"_blank\">"+bio.contacts.github+"</a>");
   // var github = HTMLgithub.replace("%data%",bio.contacts.github);
   // var github = HTMLgithub.replace("%data%","github");
   // var f_email = HTMLemail.replace("%data%", bio.contacts.email);
-  var f_email = HTMLemail.replace("%data%", "email");
+  var f_email = HTMLemail.replace("%data%","<a class=\"contacts-link\" href=\"mailto:"+bio.contacts.email+"\">"+bio.contacts.email+"</a>");
   var f_location = HTMLlocation.replace("%data%",bio.contacts.location);
 
   // console.log(f_photo);
@@ -120,7 +121,7 @@ bio.display = function () {
   //$("h1").append(internationalizeButton);
   // contacts
   $("#header").append(f_photo);
-  HTMLContacts = "<ul id=\"topContacts\" class='flex-box'></ul>";
+  HTMLContacts = '<dl id="topContacts"></dl>';
   $("#header").append(HTMLContacts);
   $("#topContacts").append(github);
   $("#topContacts").append(f_location);
@@ -129,11 +130,8 @@ bio.display = function () {
   // $("#header").append(f_welcome_msg);
   // skills
   if ( bio.skills.length > 0 ) {
-    
-    $("#header").append("<div id=\"skills-at-a-glance\"></div>");
-    
-    
-    $("#header").append(HTMLskillsStart);
+
+    $("#topContacts").append(HTMLskillsStart);
     //console.log(bio.skills[0])
     for (s in bio.skills) {
       var formattedSkill = HTMLskills.replace("%data%",bio.skills[s]);
@@ -322,5 +320,5 @@ work.display();
 projects.display();
 education.display();
 $("#mapDiv").append(googleMap);
-//$("#footerContacts").append("<a href=\"mailto:" + bio.contacts.email + "\">"+bio.contacts.email+"</a>")
+// $("#footerContacts").append("<a href=\"mailto:" + bio.contacts.email + "\">"+bio.contacts.email+"</a>")
 // $("#topContacts").replaceWith("<span class=\"orange-text\">github: <a href=\"#\"><span class=\"white-text\">benny</span></a></span>");
