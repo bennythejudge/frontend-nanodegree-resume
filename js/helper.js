@@ -19,7 +19,7 @@ var HTMLheaderRole = "<span id=\"role\">%data%</span><hr/>";
 
 // var HTMLcontactGeneric = "<li class='flex-item'><span class='orange-text'>%contact%</span><span class='white-text'>%data%</span></li>";
 
-// modified to change the styling of the header using dt/dd/dl
+// modified to change the styling of the header using dt/dd
 var HTMLmobile = "<dt>mobile</dt><dd>%data%</dd>";
 var HTMLemail = "<dt>email</dt><dd>%data%</dd>";
 // var HTMLtwitter = "<dt>twitter</dt><dd>%data%</dd>";
