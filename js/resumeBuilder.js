@@ -208,7 +208,7 @@ var education = {
                     "url" : "https://www.coursera.org"
                 }
             ]
-    };
+};
 
 education.display = function () {
     'use strict';
@@ -250,19 +250,22 @@ var projects = {
                 "title": "TFL train arrivals",
                 "dates": "2014",
                 "description": "TFL Train arrival board",
-                "images": ["images/197x148.gif"]
+                "images": ["images/197x148.gif"],
+                "link": "http://www.webificio.it/dboard"
             },
             {
                 "title": "BhaktiEvent e-store",
                 "dates": "2013",
                 "description": "e-store for German Charity Bhakti Marga",
-                "images": ["images/197x148.gif"]
+                "images": ["images/197x148.gif"],
+                "link": "http://www.bhaktievent.de"
             },
             {
                 "title": "Iain Sinclair Official Unofficial",
                 "dates": "2008",
                 "description": "Official Unofficial website of British writer Iain Sinclair",
-                "images": ["images/197x148.gif"]
+                "images": ["images/197x148.gif"],
+                "link": "http://www.iainsinclair.org.uk"
             }
         ]
 };
@@ -276,7 +279,8 @@ projects.display = function () {
     for (p in projects.projects) {
         if (projects.projects.hasOwnProperty(p)) {
             $("#projects-foldable-content").append(HTMLprojectStart);
-            $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.projects[p].title));
+            $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", "<a href=\""+ projects.projects[p].link + "\" target=\"_bkank\">" + projects.projects[p].title + "</a>"));
+            // $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.projects[p].title));
             $(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects.projects[p].dates));
             $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects.projects[p].description));
             if (projects.projects[p].images.length > 0) {
@@ -287,10 +291,12 @@ projects.display = function () {
 };
 
 /////////// main /////////////////////////////////////
-bio.display();
+$("#mapDiv").append(googleMap);
 work.display();
 projects.display();
 education.display();
-$("#mapDiv").append(googleMap);
+bio.display();
 // $("#footerContacts").append("<a href=\"mailto:" + bio.contacts.email + "\">"+bio.contacts.email+"</a>")
 // $("#topContacts").replaceWith("<span class=\"orange-text\">github: <a href=\"#\"><span class=\"white-text\">benny</span></a></span>");
+  // Stuff to do as soon as the DOM is ready
+
