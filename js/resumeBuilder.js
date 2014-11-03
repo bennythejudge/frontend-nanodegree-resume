@@ -289,10 +289,6 @@ projects.display = function () {
 var menu = {
    "menu": [
       { 
-         "title": "home",
-         "link": "#"
-      },
-      { 
          "title": "work",
          "link": "#workH2"
       },
