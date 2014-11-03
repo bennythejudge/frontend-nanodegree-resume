@@ -301,12 +301,12 @@ var menu = {
          "link": "#projectsH2"
       },
       {
-         "title": "let's talk",
-         "link": "mailto:benedettologiudice@gmail.com"
-      },
-      {
          "title": "map",
          "link": "#mapDiv"
+      },
+      {
+         "title": "let's talk",
+         "link": "mailto:benedettologiudice@gmail.com"
       }
    ]
 };
