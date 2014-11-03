@@ -5,7 +5,6 @@
 by Benedetto Lo Giudice
 */
 
-
 var work = {
     "jobs":  [
         {
@@ -74,19 +73,16 @@ work.display = function () {
 };
 
 /*
-bio contains a name, role, welcomeMessage, contacts object and skills array. The contacts object should contain (but doesn't have to) a mobile number, email address, github username, twitter handle and location.
+bio contains a name, role, welcomeMessage, contacts object and skills array. The contacts object should contain (but doesn't have to) a mobile number, email address, github username, twitter handle and location. I have added a github link
 */
-/* I have added a github link */
 var bio = {
     "name": "Benedetto Lo Giudice",
     "role": "Front-End Developer Apprentice",
     "welcomeMessage": "",
     "contacts": {
-        "mobile": "+xxxxxxxx",
         "email": "benedettologiudice@gmail.com",
         "githublink": "https://github.com/bennythejudge",
         "github": "bennythejudge",
-        "twitter": "@twitter",
         "location" : "London, UK, Europe",
         "linkedin": "https://www.linkedin.com/in/benedettologiudice"
     },
@@ -104,7 +100,7 @@ bio.display = function () {
         f_location = HTMLlocation.replace("%data%", bio.contacts.location),
         f_linkedin = HTMLlinkedin.replace("%data%", "<a class=\"contacts-link\" href=\"" + bio.contacts.linkedin + "\" target=\"_blank\">" + bio.contacts.linkedin + "</a>"),
         formattedSkill,
-        s,
+        skill,
         HTMLContacts;
 
     // Display stuff please
@@ -123,9 +119,9 @@ bio.display = function () {
     // skills
     if (bio.skills.length > 0) {
         $("#topContacts").append(HTMLskillsStart);
-        for (s in bio.skills) {
-            if (bio.skills.hasOwnProperty(s)) {
-                formattedSkill = HTMLskills.replace("%data%", bio.skills[s]);
+        for (skill in bio.skills) {
+            if (bio.skills.hasOwnProperty(skill)) {
+                formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
                 $("#skills").append(formattedSkill);
             }
         }
@@ -212,29 +208,29 @@ var education = {
 
 education.display = function () {
     'use strict';
-    var a, e;
+    var formattedHtml, edu;
     if (education.schools.length > 0 || education.onlineCourses.length > 0) {
         // start the HTML
         $("#education").append("<div id=\"education-foldable-content\"></div>");
-        for (e in education.schools) {
-            if (education.schools.hasOwnProperty(e)) {
+        for (edu in education.schools) {
+            if (education.schools.hasOwnProperty(edu)) {
                 $("#education-foldable-content").append(HTMLschoolStart);
-                a = HTMLschoolName.replace("%data%", education.schools[e].name);
-                $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[e].dates));
-                $(".education-entry:last").append(a);
-                $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[e].location));
-                $(".education-entry:last").append(HTMLschoolDegree.replace("%data%", education.schools[e].degree));
-                $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[e].major));
+                formattedHtml = HTMLschoolName.replace("%data%", education.schools[edu].name);
+                $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[edu].dates));
+                $(".education-entry:last").append(formattedHtml);
+                $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[edu].location));
+                $(".education-entry:last").append(HTMLschoolDegree.replace("%data%", education.schools[edu].degree));
+                $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[edu].major));
             }
         }
         // start the HTML
         $(".education-entry:last").append(HTMLonlineClasses);
-        for (e in education.onlineCourses) {
-            if (education.onlineCourses.hasOwnProperty(e)) {
-                a = HTMLonlineTitle.replace("%data%", education.onlineCourses[e].title);
-                $(".education-entry:last").append(a);
-                $(".education-entry:last").append(HTMLonlineSchool.replace('%data%', education.onlineCourses[e].school));
-                $(".education-entry:last").append(HTMLonlineDates.replace('%data%', education.onlineCourses[e].dates));
+        for (edu in education.onlineCourses) {
+            if (education.onlineCourses.hasOwnProperty(edu)) {
+                formattedHtml = HTMLonlineTitle.replace("%data%", education.onlineCourses[edu].title);
+                $(".education-entry:last").append(formattedHtml);
+                $(".education-entry:last").append(HTMLonlineSchool.replace('%data%', education.onlineCourses[edu].school));
+                $(".education-entry:last").append(HTMLonlineDates.replace('%data%', education.onlineCourses[edu].dates));
             }
         }
     }
@@ -274,29 +270,65 @@ var projects = {
 // encapsulation
 projects.display = function () {
     'use strict';
-    var p;
+    var proj;
     $("#projects").append("<div id=\"projects-foldable-content\"></div>");
-    for (p in projects.projects) {
-        if (projects.projects.hasOwnProperty(p)) {
+    for (proj in projects.projects) {
+        if (projects.projects.hasOwnProperty(proj)) {
             $("#projects-foldable-content").append(HTMLprojectStart);
-            $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", "<a href=\""+ projects.projects[p].link + "\" target=\"_bkank\">" + projects.projects[p].title + "</a>"));
-            // $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.projects[p].title));
-            $(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects.projects[p].dates));
-            $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects.projects[p].description));
-            if (projects.projects[p].images.length > 0) {
-                $(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects.projects[p].images[0]));
+            $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", "<a href=\""+ projects.projects[proj].link + "\" target=\"_bkank\">" + projects.projects[proj].title + "</a>"));
+            $(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects.projects[proj].dates));
+            $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects.projects[proj].description));
+            if (projects.projects[proj].images.length > 0) {
+                $(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects.projects[proj].images[0]));
             }
         }
     }
 };
 
+/* Menu Builder: JSON for the menu - the idea is that it allows flexibility in building the menu. However I haven't made provisions for checking the number of elements in the JSON object and how this would affect the look of the object */
+var menu = {
+   "menu": [
+      { 
+         "title": "home",
+         "link": "#"
+      },
+      { 
+         "title": "work",
+         "link": "#workH2"
+      },
+      {
+         "title": "education",
+         "link": "#educationH2"
+      },
+      {
+         "title": "projects",
+         "link": "#projectsH2"
+      },
+      {
+         "title": "let's talk",
+         "link": "mailto:benedettologiudice@gmail.com"
+      }
+   ]
+};
+
+menu.display = function () {
+    'use strict';
+    var i=0, entry="", toptitle="", y=0;
+    $("nav").append("<ul id=\"navmenu\">");
+    //alert(menu.menu.length);
+    for (i=0; i<menu.menu.length; i=i+1) {
+       //alert(menu.menu[i].type);
+       entry = '<li><a href="'+menu.menu[i].link+'">'+menu.menu[i].title+'</a></li>';
+          // console.log(entry);
+          $("#navmenu:last").append(entry);
+    }
+};
+
 /////////// main /////////////////////////////////////
-$("#mapDiv").append(googleMap);
+menu.display();
+bio.display();
 work.display();
 projects.display();
 education.display();
-bio.display();
-// $("#footerContacts").append("<a href=\"mailto:" + bio.contacts.email + "\">"+bio.contacts.email+"</a>")
-// $("#topContacts").replaceWith("<span class=\"orange-text\">github: <a href=\"#\"><span class=\"white-text\">benny</span></a></span>");
-  // Stuff to do as soon as the DOM is ready
+$("#mapDiv").append(googleMap);
 
