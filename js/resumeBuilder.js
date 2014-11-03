@@ -303,6 +303,10 @@ var menu = {
       {
          "title": "let's talk",
          "link": "mailto:benedettologiudice@gmail.com"
+      },
+      {
+         "title": "map",
+         "link": "#mapDiv"
       }
    ]
 };
