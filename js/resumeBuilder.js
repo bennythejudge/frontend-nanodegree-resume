@@ -8,25 +8,46 @@ by Benedetto Lo Giudice
 var work = {
     "jobs":  [
         {
-            "employer": "International Bank",
-            "title": "Unix engineer",
+            "employer": "Contractor, various roles in London",
+            "title": "Unix SA",
             "location": "London, UK",
             "dates": "2004 to current",
-            "description": "Derivative trading support"
+            "description": "Various roles"
         },
         {
-            "employer": "International BankG",
+            "employer": "Deutsch Bank",
             "title": "Unix SA",
             "location": "Frankfurt, Germany",
             "dates": "2000 to 2004",
             "description": "AIX, Solaris and Linux sysadmin"
         },
         {
-            "employer": "Dutch ISP",
+            "employer": "Veesatel",
             "title": "Unix SA",
             "location": "Amsterdam, Netherlands",
-            "dates": "1998 to 2000",
+            "dates": "2000 to 2000",
             "description": "Supporting the ISP Unix systems"
+        },
+        {
+            "employer": "Dutchtone",
+            "title": "Unix SA",
+            "location": "Den Haag, Netherlands",
+            "dates": "1999 to 2000",
+            "description": "Playing with Sun E10k for the first time"
+        },
+        {
+            "employer": "Software.com",
+            "title": "Unix engineer",
+            "location": "Pomezia, Italy",
+            "dates": "1999 to 1999",
+            "description": "Deploy InterMail MX in one of the largest European ISP (+15mln users)"
+        },
+        {
+            "employer": "European Space Agency",
+            "title": "Unix SA",
+            "location": "Noordwijk, Netherlands",
+            "dates": "1998 to 1998",
+            "description": "Supporting Unix and Linux systems"
         },
         {
             "employer": "Clearing House",

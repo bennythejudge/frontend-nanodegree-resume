@@ -85,13 +85,12 @@ function initializeMap() {
   // This next line makes `map` a new Google Map JavaScript Object and attaches it to
   // <div id="map">, which is appended as part of an exercise late in the course.
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
-
   /*
   locationFinder() returns an array of every location string from the JSONs
   written for bio, education, and work.
   */
   function locationFinder() {
-    //console.log("inside locationFinder");
+    // console.log("inside locationFinder");
     // initializes an empty array
     var locations = [];
     // adds the single location property from bio to the locations array
@@ -105,11 +104,12 @@ function initializeMap() {
     // iterates through work locations and appends each location to
     // the locations array
     for (var job in work.jobs) {
-      //console.log(work.jobs[job].location);
+      // console.log(work.jobs[job].location);
       locations.push(work.jobs[job].location);
     }
     return locations;
   }
+  // console.log('after locationFinder');
 
   /*
   createMapMarker(placeData) reads Google Places search results to create map pins.
@@ -117,10 +117,13 @@ function initializeMap() {
   about a single location.
   */
   function createMapMarker(placeData) {
+    // console.log('inside createMapMarker');
+    // console.log(placeData);
 
     // The next lines save location data from the search result object to local variables
     var lat = placeData.geometry.location.k;  // latitude from the place service
-    var lon = placeData.geometry.location.B;  // longitude from the place service
+    var lon = placeData.geometry.location.D;  // longitude from the place service
+    // console.log('long: ' + lon);
     var name = placeData.formatted_address;   // name of the place from the place service
     var bounds = window.mapBounds;            // current boundaries of the map window
 
@@ -140,6 +143,7 @@ function initializeMap() {
 
     marker.infowindow = infoWindow;
     
+    
     // hmmmm, I wonder what this is about...
     // how does closing infowindows work?
     // 1. add the infowindow to the marker as soon as the infowindo
@@ -155,10 +159,15 @@ function initializeMap() {
       }
       infoWindow.open(map,marker);
       // your code goes here!
+      // console.log('inside addListener');
+      
     });
 
     // this is where the pin actually gets added to the map.
     // bounds.extend() takes in a map location object
+    // console.log('before bounds.extend');
+    // console.log(lat);
+    // console.log(lon);
     bounds.extend(new google.maps.LatLng(lat, lon));
     // fit the map to the new marker
     map.fitBounds(bounds);
@@ -174,6 +183,8 @@ function initializeMap() {
   */
   function callback(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
+      // console.log("inside callback");
+      // console.log(results[0]);
       createMapMarker(results[0])
     } else {
       console.log("ERROR: " + status);
@@ -225,5 +236,6 @@ window.addEventListener('load', initializeMap);
 // and adjust map bounds
 window.addEventListener('resize', function(e) {
   // Make sure the map bounds get updated on page resize
+  // console.log('inside resize event handler');
  map.fitBounds(mapBounds);
 });
