@@ -3,6 +3,9 @@ nanodegree front end developer
 project nr. 2
 interactive resume
 ------------------------
+
+[![GuardRails badge](https://badges.production.guardrails.io/bennythejudge/frontend-nanodegree-resume.svg)](https://www.guardrails.io)
+
 work started downloading the code from udacity
 i worked several days before setting up github, changing the remote origin URL
 to my own, and doing the first commit and push
